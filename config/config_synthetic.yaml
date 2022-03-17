@@ -1,0 +1,22 @@
+n_train_graphs: 2000          # Number of graphs
+n_test_graphs: 500
+try_before_stop: 30      # Stop after generating try_before_stop points unsucessfully in a row
+n_max: 35                # max number of points in the set
+#average_n: 15           # For poisson Sampling, no the true average_n
+extrapolation_n: 10
+save: True
+save_path: './data/synthetic'
+translation_std: 0
+
+# 1st constraint: atoms must be inside a bounding box
+min_bound: [-6, -6, -6]
+max_bound: [6, 6, 6]
+
+# 2nd constraint: atoms should not be too close from each other
+min_dist: 1
+
+# Third constraint: not too many atoms should be close
+num_atom_types: 4
+atom_probs: [0.05, 0.05, 0.1, 0.8]    # Warning: the real distribution will be VERY different
+atoms_val: [1, 2, 3, 4]
+neighbor_threshold: 2

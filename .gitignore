@@ -1,0 +1,12 @@
+data/
+plots/
+__pycache__/*
+wandb/
+utils/__pycache__/*
+.idea/
+layers/__pycache__/
+layers/.DS_Store
+utils/.DS_Store
+.DS_Store
+results/analyze_results.py
+results/

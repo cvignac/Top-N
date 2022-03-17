@@ -1,0 +1,74 @@
+# YAML Configuration file for the network
+
+# layers can be chosen in {Linear, MultiHeadAttention, Sum, MLP}
+# Dimensions to give:
+#   - Linear (input, output)
+#   - MultiHeadAttention (width)
+#   - Sum ()
+#   - MLP (input, width, ... , width, output)
+
+# Aggregator can be chosen in [PNA, Set2Set]
+
+Global:
+  predict_molecular_formula: False
+  num_atom_types: 4
+  use_bond_types: False
+  num_bond_types: -1
+  latent_dim: 30
+  set_channels: 16
+  cosine_channels: 3
+  lmbdas: [0.003, 0.0000, 0, 0.000, 200, 200]      # KLdiv, predict_formula, bond_types, predict_n, NN, valency
+  n_eval: 1000    # Number of sets to generate at each evaluation
+
+Encoder:
+  initial_mlp_layers: 2
+  hidden_initial: 128
+  hidden: 64
+  use_bn: True
+  use_residual: True
+  layers: ["Transformer", "Transformer", "Transformer"]
+  aggregator: "PNA"
+  final_mlp_layers: 1
+  hidden_final: 128
+
+SetGenerator:
+  name: None
+  learn_from_latent: False
+  max_n: 35
+  n_distribution: None
+  num_mlp_layers: 2
+  hidden: 32
+  mlp_gen_hidden: 512     # Used my MLP generators only
+  extrapolation_n: 10     # Used in extrapolation experiments
+
+Decoder:
+  initial_mlp_layers: 2
+  hidden_initial: 128
+  modulation: None
+  layers: ["Transformer", "Transformer", "Transformer"]
+  hidden: 64
+  final_mlp_layers: 2
+  hidden_final: 64
+  use_bn: True
+  use_residual: True
+
+Modules:
+  MLP:
+    num_mlp_layers: 2
+    hidden_mlp: 64
+  Transformer:
+    n_heads: 4
+    head_width: 64
+    dim_feedforward: 256
+    residuals: True
+
+  Set2Set:
+    processing_steps: 20
+
+  PNA:
+    average_n: 9
+
+
+
+
+
