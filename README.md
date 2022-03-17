@@ -6,7 +6,9 @@ To run the SetMNISt or CLEVR experiments, download the corresponding repositorie
 and https://github.com/LukeBolly/tf-tspn/blob/master/models/set_prior.py) and replace the corresponding file (`dspn.py`
 or `tspn.py`) by the one present in the `dspn_tspn` folder.
 
-To run set generation, run `main.py`.
+To run set generation, 
+  - generate the dataset: `python3 utils/generate_synthetic_dataset.py`
+  - run `main.py`.
 
 To run graph generation, run `molecule_generation/graph_main.py`.
 
