@@ -3,7 +3,7 @@ import argparse
 import os
 import yaml
 from easydict import EasyDict as edict
-from src.paths import CONFIG_DIR
+from paths import CONFIG_DIR
 import wandb
 
 

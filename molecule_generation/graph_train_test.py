@@ -2,17 +2,15 @@ import rdkit.Chem as Chem
 import os
 import numpy as np
 import torch
-from src.paths import DATA_DIR
+from paths import DATA_DIR
 from utils.metrics import GraphVAELoss, GraphMatching, BasicMolecularMetrics
 from model import GraphTransformerVae
 from utils.log_utils import log_train_metrics, log_evaluation_metrics, print_generated_mols
 from utils.plot_utils import plot_sets
 from torch.optim import Adam
 from torch.optim.lr_scheduler import ReduceLROnPlateau
-from torch_geometric.datasets import QM9
-from utils.data_utils import CustomQM9, CustomDataLoader, RemoveHydrogens, benzene_dataset, mol1_dataset
-from torch_geometric.nn import global_add_pool
-from torch_geometric.data import DataLoader
+from utils.data_utils import CustomQM9, CustomDataLoader, RemoveHydrogens
+
 
 qm9_atom_dict = {0: 'C', 1: 'N', 2: 'O', 3: 'F'}  # Warning: hydrogens have been removed
 qm9_bond_dict = [Chem.rdchem.BondType.SINGLE, Chem.rdchem.BondType.DOUBLE, Chem.rdchem.BondType.TRIPLE]
@@ -34,9 +32,7 @@ def train(args, config,  wandb):
     remove_hydrogens = RemoveHydrogens()
     dataset = CustomQM9(DATA_DIR, pre_transform=remove_hydrogens)
     loader = CustomDataLoader(dataset, batch_size=args.batch_size)
-    # dataset = benzene_dataset()
-    # dataset = mol1_dataset()
-    # loader = DataLoader(dataset)
+
 
     # Define model, loss, optimizer
     model = GraphTransformerVae(config).to(device)

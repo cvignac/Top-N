@@ -1,6 +1,6 @@
 import sklearn.preprocessing
 from rdkit import Chem
-from torch_geometric.data import DataLoader as TGDataLoader
+from torch_geometric.loader import DataLoader as TGDataLoader
 from torch_geometric.datasets import QM9
 from torch_geometric.data import Batch, Dataset
 from torch.utils.data import BatchSampler, DataLoader, Dataset, Sampler, SequentialSampler

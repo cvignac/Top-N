@@ -10,3 +10,4 @@ utils/.DS_Store
 .DS_Store
 results/analyze_results.py
 results/
+graph_generation/data/*
