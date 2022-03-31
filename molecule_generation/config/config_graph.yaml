@@ -1,0 +1,53 @@
+num_atom_types: 4
+num_edge_types: 3
+max_num_nodes: 9
+lambdas: [10, 10000, 0.5, 1, 1, 0.002, 1, 0.001, 0] # X, A, E, formula, num edges, num edge types, valency, KL, N
+#lambdas: [10, 100000, 0., 0, 0, 0.0, 0, 0.01, 0]
+predict_n: False
+n_eval: 1000
+edge_type_counts: [2146272, 247016, 73256]
+
+set_channels: 16
+cosine_channels: 4
+predict_molecular_formula: False
+
+n_prob: None
+dataset_max_n: 9
+
+latent_dim: 256
+spatial_dim: 64
+use_batch_norm: False
+
+initial_mlp_layers_encoder: 2
+hidden_encoder: 32
+num_layers_encoder: 2
+final_mlp_layers_encoder: 2
+hidden_last_encoder: 256
+
+
+set_gen_name: None
+learn_from_latent: False
+max_n: 15
+n_distribution: [0, 3, 5, 9, 31, 127, 608, 3138, 17879, 109031]
+#n_distribution: [0, 0, 0, 1]
+num_mlp_layers_set_gen: 2
+hidden_set_gen: 32
+
+initial_mlp_layers_decoder: 2
+hidden_initial_decoder: 128
+hidden_decoder: 64
+hidden_edge_prob: 64
+edge_prob_layers: 3
+hidden_last_decoder: 128
+use_residual: True
+final_mlp_layers_decoder: 1
+decoder_layers: ["Transformer", "Transformer", "Transformer"]
+atom_types_mlp_layers: 2
+
+hidden_edge_types: 64
+edge_types_layers: 2
+
+n_heads_transformer: 4
+dim_feedforward_transformer: 128
+
+mlp_gen_hidden: 512     # Used my MLP generators only
